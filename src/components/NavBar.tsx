@@ -84,7 +84,7 @@ const NavBar = (props: any) => {
           flexGrow={1}
         >
           <chakra.a
-            href={"/"}
+            href={"/home"}
             w={["100%", "100%", "auto"]}
             borderRadius={["5px", "5px", "5px"]}
             mr={["0", "0", "3"]}

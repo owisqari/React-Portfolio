@@ -5,14 +5,16 @@ import {
   CardFooter,
   Avatar,
   Box,
-  Button,
   Flex,
   Heading,
   IconButton,
   Image,
   Text,
 } from "@chakra-ui/react";
-import AccordionCard from "./AccordionCard";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import CardBtn from "./CardBtn";
+import ExtraCard from "./ExtraCard";
 interface IBodyCardsProps {
   name: string;
   text: string;
@@ -21,6 +23,12 @@ interface IBodyCardsProps {
   avatar: string;
 }
 const BodyCards = (props: IBodyCardsProps) => {
+  const [extra, setExtra] = useState(false);
+  const { id } = useParams();
+
+  const handleClick = () => {
+    setExtra(!extra);
+  };
   return (
     <Card maxW="md">
       <CardHeader>
@@ -59,7 +67,9 @@ const BodyCards = (props: IBodyCardsProps) => {
           },
         }}
       >
-        <AccordionCard text={props.AccordionCard} />
+        <Link to={`/home/${id}`} onClick={handleClick}>
+          {extra ? <ExtraCard text="hello" /> : <CardBtn />}
+        </Link>
       </CardFooter>
     </Card>
   );
